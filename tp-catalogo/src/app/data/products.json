@@ -3,60 +3,60 @@
         "id": 1,
         "name": "Air Jordan 4 Retro 'Off White'",
         "price": "$200",
-        "image": "/images/off_white.jpg"
+        "image": "../images/off_white.jpg"
     },
     {
         "id": 2,
         "name": "Air Jordan 4 Retro 'Black Cat'",
         "price": "$220", 
-       "image": "/images/black_cat.jpg"
+        "image": "../images/black_cat.jpg"
     },
     {
         "id": 3,
         "name": "Air Jordan 4 Retro 'Frozen Moments'",
         "price": "$210",
-        "image": "/images/frozen_moments.webp"
+        "image": "../images/frozen_moments.webp"
     },
     {
         "id": 4,
         "name": "Air Jordan 4 'Retro Thunder'",
         "price": "$240",
-        "image": "/images/retro_thunder.jpg"
+        "image": "../images/retro_thunder.jpg"
     },
     {
         "id": 5,
         "name": "Air Jordan 4 Retro 'University Blue'",
         "price": "$250",
-        "image": "/images/university_blue.png"
+        "image": "../images/university_blue.png"
     },
     {
         "id": 6,
         "name": "Air Jordan 4 Retro 'White Thunder'",
         "price": "$230",
-        "image": "/images/white_thunder.jpg"
+        "image": "../images/white_thunder.jpg"
     },
     {
         "id": 7,
         "name": "Air Jordan 4 'White Oreo'",
         "price": "$200",
-        "image": "/images/white_oreo.webp"
+        "image": "../images/white_oreo.webp"
     },
     {
         "id": 8,
         "name": "Air Jordan 4 'Military Black'",
         "price": "$240",
-        "image": "/images/military_black.jpg"
+        "image": "../images/military_black.jpg"
     },
     {
         "id": 9,
         "name": "Air Jordan 4 'Midnight Navy'",
         "price": "$300",
-        "image": "/images/midnight_navy.webp"
+        "image": "../images/midnight_navy.webp"
     },
     {
         "id": 10,
-        "name": "Air Jordan 4 Retro 'Lightning'",
+        "name": "Air Jordan 4 'Bred'",
         "price": "$260",
-        "image": "/images/jordan4_lightning.jpg"
+        "image": "../images/bred.webp"
     }
 ]
