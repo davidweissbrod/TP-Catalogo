@@ -1,47 +1,47 @@
-'use client'
+'use client';
 import Image from "next/image";
 import styles from "./page.module.css";
 import Router from "./Router";
-import products from './data/products.json';
-//import imagen from 'src/app/images/off_white.jpg'
-
-
-
-
-
-const getRandomProducts = () => {
-  return products.sort(() => 0.5 - Math.random()).slice(0, 6);
-};
-
-const getRandomImages = () => {
-  return products.map(product => product.image).sort(() => 0.5 - Math.random()).slice(0, 3);
-};
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import RandomImages from "./components/RandomImages";
 
 export default function Home() {
-  const randomProducts = getRandomProducts();
-  const carouselImages = getRandomImages();
+  const [randomProducts, setRandomProducts] = useState([]);
+  
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get('https://dummyjson.com/products');
+      const products = response.data.products;
+      const randomProducts = getRandomProducts(products);
+      setRandomProducts(randomProducts);
+      console.log(products);
+    } catch (error) {
+      console.error('Error al obtener los productos:', error);
+    }
+  };
 
+  const getRandomProducts = (products) => {
+    return products.sort(() => 0.5 - Math.random()).slice(0, 6);
+  };
 
-
- 
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   return (
     <div>
       <h1>Bienvenido a nuestro Catálogo</h1>
 
       <div className={styles.carousel}>
-        {carouselImages.map((src, index) => (
-          <div key={index} className={styles.slide}>
-            <Image src='' alt={`Imagen`} width={600} height={400} />
-          </div>
-        ))}
+        <RandomImages />
       </div>
 
       <h2>Productos</h2>
       <div className={styles.products}>
         {randomProducts.map(product => (
           <div key={product.id} className={styles.product}>
-            <Image src='' alt={'product.name'} width={200} height={200} />
+            <Image src={product.thumbnail} alt={product.title} width={200} height={200} />
             <h3>{product.name}</h3>
           </div>
         ))}
@@ -50,4 +50,6 @@ export default function Home() {
     </div>
   );
 }
+
+
 
