@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
 import { useEffect } from "react";
-import Router from "next/router";
+import Router from "@/app/components/Router";
 
 export default function Producto() {
   const [products, setProducts] = useState([]);
@@ -23,10 +23,6 @@ export default function Producto() {
     product.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
     (selectedCategory === '' || product.category === selectedCategory)
   );
-
-  const handleProductClick = (id) => {
-    router.push(`/products/${id}`); 
-  };
 
 
   return (
@@ -56,7 +52,6 @@ export default function Producto() {
         {filteredProducts.map((product) => (
           <div
             key={product.id}
-            onClick={() => handleProductClick(product.id)} 
             style={{ border: '1px solid #ddd', padding: '20px', cursor: 'pointer' }}
           >
             <img
@@ -67,6 +62,7 @@ export default function Producto() {
             <h3>{product.title}</h3>
             <p>{product.description}</p>
             <p><strong>${product.price}</strong></p>
+            <Router href={`/producto/${product.id}`}>Ver Detalles</Router>
           </div>
         ))}
       </div>

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-export default function ProductDetail() {
+export default function Detalle() {
   const router = useRouter();
   const { id } = router.query; 
   const [product, setProduct] = useState(null);
@@ -13,8 +13,6 @@ export default function ProductDetail() {
         .then((data) => setProduct(data));
     }
   }, [id]);
-
-  if (!product) return <div>Loading...</div>;
 
   return (
     <div style={{ padding: '20px' }}>
