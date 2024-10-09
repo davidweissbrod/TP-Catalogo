@@ -1,12 +1,9 @@
 "use client"
 import { useRouter } from 'next/navigation'
+import Button from 'react-bootstrap/Button';
  
 function Router({ children, href }) {
   const router = useRouter()
-  const style = {
-    marginRight: 10,
-    color: router.asPath === href ? 'red' : 'black',
-  }
  
   const handleClick = (e) => {
     e.preventDefault()
@@ -14,9 +11,9 @@ function Router({ children, href }) {
   }
  
   return (
-    <a href={href} onClick={handleClick} style={style}>
+    <Button variant='primary' onClick={handleClick}>
       {children}
-    </a>
+    </Button>
   )
 }
 

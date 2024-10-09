@@ -1,7 +1,7 @@
 'use client';
 import Image from "next/image";
 import styles from "./page.module.css";
-import Router from "./Router";
+import Router from "./components/Router";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import RandomImages from "./components/RandomImages";
@@ -41,7 +41,7 @@ export default function Home() {
       <div className={styles.products}>
         {randomProducts.map(product => (
           <div key={product.id} className={styles.product}>
-            <Image src={product.thumbnail} alt={product.title} width={200} height={200} />
+            <img src={product.thumbnail} alt={product.title} width={200} height={200} />
             <h3>{product.name}</h3>
           </div>
         ))}

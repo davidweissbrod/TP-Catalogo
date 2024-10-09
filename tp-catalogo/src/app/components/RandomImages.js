@@ -35,8 +35,7 @@ const RandomImages = () => {
         <div>
             <div>
                 {randomProducts.map(product => (
-                    <Image
-                        key={product.id}
+                    <img
                         src={product.thumbnail}
                         alt={product.title}
                         className="product-image"
