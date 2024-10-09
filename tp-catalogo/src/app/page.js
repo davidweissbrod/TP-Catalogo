@@ -1,10 +1,10 @@
 'use client';
-import Image from "next/image";
 import styles from "./page.module.css";
 import Router from "./components/Router";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import RandomImages from "./components/RandomImages";
+import CarouselHome from "./components/Carousel";
+import Navbar from './components/Navbar.js'
 
 export default function Home() {
   const [randomProducts, setRandomProducts] = useState([]);
@@ -30,25 +30,27 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <>
+      <Navbar/>
+      <div className={styles.productsHome}>
       <h1>Bienvenido a nuestro Catálogo</h1>
-
-      <div className={styles.carousel}>
-        <RandomImages />
-      </div>
-
+      <CarouselHome />
       <h2>Productos</h2>
       <div className={styles.products}>
         {randomProducts.map(product => (
           <div key={product.id} className={styles.product}>
-            <img src={product.thumbnail} alt={product.title} width={200} height={200} />
-            <h3>{product.name}</h3>
+            <img src={product.thumbnail} alt={product.title} />
+            <h3>{product.title}</h3>
           </div>
         ))}
-        <Router children={'Productos'} href={'./screens/producto'}>Productos</Router>
       </div>
+      <Router children={'Productos'} href={'./screens/producto'}>
+        Productos
+      </Router>
     </div>
+    </>
   );
+  
 }
 
 

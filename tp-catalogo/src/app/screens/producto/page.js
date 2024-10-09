@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import Router from "@/app/components/Router";
+import styles from '../../producto.module.css'
 
 export default function Producto() {
   const [products, setProducts] = useState([]);

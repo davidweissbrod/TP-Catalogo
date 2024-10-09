@@ -17,7 +17,7 @@ const RandomImages = () => {
 
     const getRandomProducts = () => {
         const shuffled = products.sort(() => 0.5 - Math.random());
-        const selected = shuffled.slice(0, 6);
+        const selected = shuffled.slice(0, 1);
         setRandomProducts(selected);
     };
 
