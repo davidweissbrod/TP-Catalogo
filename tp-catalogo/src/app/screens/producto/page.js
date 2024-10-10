@@ -1,8 +1,9 @@
 "use client"
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from "react";
 import { useEffect } from "react";
+import Navbar from '../../components/Navbar.js'
 import Router from "@/app/components/Router";
-import styles from '../../producto.module.css'
 
 export default function Producto() {
   const [products, setProducts] = useState([]);
@@ -27,7 +28,9 @@ export default function Producto() {
 
 
   return (
-    <div style={{ padding: '20px' }}>
+    <>
+      <Navbar/>
+      <div style={{ padding: '20px' }}>
       <input
         type="text"
         placeholder="Search products..."
@@ -68,5 +71,6 @@ export default function Producto() {
         ))}
       </div>
     </div>
+    </>
   );
 }

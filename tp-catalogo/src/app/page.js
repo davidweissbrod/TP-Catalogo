@@ -1,4 +1,5 @@
 'use client';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "./page.module.css";
 import Router from "./components/Router";
 import axios from 'axios';

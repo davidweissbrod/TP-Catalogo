@@ -1,8 +1,11 @@
 "use client"
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from "react"
 import { Form } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Navbar from '../../components/Navbar.js'
+import styles from '../../contacto.module.css'
 
 const Contacto = () => {
     const [show, setShow] = useState(false);
@@ -10,7 +13,9 @@ const Contacto = () => {
     const handleShow = () => setShow(true);
     return(
         <>
-        <h1>Contactanos!</h1>
+        <Navbar/>
+        <h1 className={styles.title}>Contactanos!</h1>
+            <div className={styles.formulario}>
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
@@ -24,6 +29,7 @@ const Contacto = () => {
                     Enviar
                 </Button>
             </Form>
+            </div>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
