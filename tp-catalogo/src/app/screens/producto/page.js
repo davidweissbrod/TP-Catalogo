@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from "react";
 import { useEffect } from "react";
@@ -68,7 +68,7 @@ export default function Producto() {
             <h3>{product.title}</h3>
             <p>{product.description}</p>
             <p><strong>${product.price}</strong></p>
-            <Router href={`./screens/producto/[id].js`} as={`/producto/${product.id}`}>Ver Detalles</Router>
+            <Router href={`/detalle/${product.id}`}>Ver Detalles</Router>
           </div>
         ))}
       </div>

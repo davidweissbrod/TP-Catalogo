@@ -43,7 +43,7 @@ export default function Home() {
             <img src={product.thumbnail} alt={product.title} />
             <h3>{product.title}</h3>
             <p><strong>${product.price}</strong></p>
-            <Router href={`/producto/[id].js`} as={`/producto/${product.id}`}>Ver Detalles</Router>
+            <Router href={`./screens/detalle`}>Ver Detalles</Router>
           </div>
         ))}
       </div>

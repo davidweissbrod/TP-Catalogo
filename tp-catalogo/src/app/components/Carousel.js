@@ -3,7 +3,7 @@ import RandomImages from './RandomImages';
 
 function DarkVariantExample() {
   return (
-    <Carousel data-bs-theme="dark">
+    <Carousel data-bs-theme="dark" style={{padding: '62px'}}>
       <Carousel.Item>
         <RandomImages/>
       </Carousel.Item>
