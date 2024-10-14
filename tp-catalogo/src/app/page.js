@@ -42,6 +42,8 @@ export default function Home() {
           <div key={product.id} className={styles.product}>
             <img src={product.thumbnail} alt={product.title} />
             <h3>{product.title}</h3>
+            <p><strong>${product.price}</strong></p>
+            <Router href={`/producto/[id].js`} as={`/producto/${product.id}`}>Ver Detalles</Router>
           </div>
         ))}
       </div>

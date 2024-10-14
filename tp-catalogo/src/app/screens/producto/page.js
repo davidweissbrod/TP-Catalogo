@@ -31,12 +31,14 @@ export default function Producto() {
     <>
       <Navbar/>
       <div style={{ padding: '20px' }}>
+        <h1>Productos</h1>
+        <br/>
       <input
         type="text"
-        placeholder="Search products..."
+        placeholder="¿Que estas buscando?"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        style={{ padding: '10px', width: '100%', marginBottom: '20px' }}
+        style={{ padding: '10px', width: '100%', marginBottom: '20px', borderRadius: '30px' }}
       />
 
       <select
@@ -59,14 +61,14 @@ export default function Producto() {
             style={{ border: '1px solid #ddd', padding: '20px', cursor: 'pointer' }}
           >
             <img
-              src={product.thumbnail}
-              alt={product.title}
-              style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-            />
+          src={product.thumbnail}
+          alt={product.title}
+          style={{ width: '100%', height: '300px', objectFit: 'contain' }}
+        />
             <h3>{product.title}</h3>
             <p>{product.description}</p>
             <p><strong>${product.price}</strong></p>
-            <Router href={`/producto/${product.id}`}>Ver Detalles</Router>
+            <Router href={`./screens/producto/[id].js`} as={`/producto/${product.id}`}>Ver Detalles</Router>
           </div>
         ))}
       </div>

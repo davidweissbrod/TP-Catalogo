@@ -1,17 +1,21 @@
-import { useRouter } from 'next/router';
+// pages/producto/[id].js
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-export default function Detalle() {
-  const router = useRouter();
-  const { id } = router.query; 
+export default function ProductDetail({ title }) {
   const [product, setProduct] = useState(null);
 
-  useEffect(() => {
-    if (id) {
-      fetch(`https://dummyjson.com/products/${id}`)
-        .then((res) => res.json())
-        .then((data) => setProduct(data));
+  const fetchProductDetails = async () => {
+    try {
+      const response = await axios.get(`https://dummyjson.com/products?limit=1&select=${title}`);
+      setProduct(response.data);
+    } catch (error) {
+      console.error('Error al obtener los detalles del producto:', error);
     }
+  };
+
+  useEffect(() => {
+    fetchProductDetails();
   }, [id]);
 
   return (
@@ -38,3 +42,5 @@ export default function Detalle() {
     </div>
   );
 }
+
+
