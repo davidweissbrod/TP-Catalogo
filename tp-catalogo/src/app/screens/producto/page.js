@@ -97,6 +97,9 @@ export default function Producto() {
                 <div>
                   <h4>Precio: <strong>${selectedProduct.price}</strong></h4>
                   <p>{selectedProduct.description}</p>
+                  <Button>
+                    Comprar
+                  </Button>
                 </div>
               </>
             )}
