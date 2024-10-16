@@ -5,7 +5,7 @@ import { Form } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Navbar from '../../components/Navbar.js'
-import styles from '../../contacto.module.css'
+import styles from '../../styles/contacto.module.css'
 
 const Contacto = () => {
     const [show, setShow] = useState(false);

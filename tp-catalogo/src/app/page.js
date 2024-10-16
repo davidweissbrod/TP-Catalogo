@@ -1,14 +1,16 @@
 'use client';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from "./page.module.css";
+import styles from './styles/page.module.css'
 import Router from "./components/Router";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import CarouselHome from "./components/Carousel";
 import Navbar from './components/Navbar.js'
 
+
 export default function Home() {
   const [randomProducts, setRandomProducts] = useState([]);
+  
   
   const fetchProducts = async () => {
     try {
@@ -43,12 +45,11 @@ export default function Home() {
             <img src={product.thumbnail} alt={product.title} />
             <h3>{product.title}</h3>
             <p><strong>${product.price}</strong></p>
-            <Router href={`./screens/detalle`}>Ver Detalles</Router>
           </div>
         ))}
       </div>
       <Router children={'Productos'} href={'./screens/producto'}>
-        Productos
+        Mas Productos
       </Router>
     </div>
     </>
