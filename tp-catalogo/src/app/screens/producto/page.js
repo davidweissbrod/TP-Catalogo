@@ -23,11 +23,13 @@ export default function Producto() {
   useEffect(() => {
     fetch('https://dummyjson.com/products')
       .then((res) => res.json())
-      .then((data) => {
-        setProducts(data.products);
-        const categories = [...new Set(data.products.map(product => product.category))];
-        setCategories(categories);
-      });
+      .then((data) => setProducts(data.products));
+  }, []);
+
+  useEffect(() => {
+    fetch('https://dummyjson.com/products/categories')
+      .then((res) => res.json())
+      .then((data) => setCategories(data));
   }, []);
 
   const filteredProducts = products.filter(product => 
@@ -48,7 +50,6 @@ export default function Producto() {
           onChange={(e) => setSearchTerm(e.target.value)}
           style={{ padding: '10px', width: '100%', marginBottom: '20px', borderRadius: '30px' }}
         />
-
         <select
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
@@ -56,12 +57,11 @@ export default function Producto() {
         >
           <option value="">Categorías</option>
           {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
+            <option key={category.slug} value={category.slug}>
+              {category.name}
             </option>
           ))}
         </select>
-
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
           {filteredProducts.map((product) => (
             <div
@@ -81,7 +81,6 @@ export default function Producto() {
             </div>
           ))}
         </div>
-
         <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
           <Modal.Header closeButton>
             <Modal.Title style={{ fontSize: '2rem' }}>{selectedProduct?.title}</Modal.Title>
