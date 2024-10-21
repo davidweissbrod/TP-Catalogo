@@ -11,7 +11,6 @@ import Navbar from './components/Navbar.js'
 export default function Home() {
   const [randomProducts, setRandomProducts] = useState([]);
   
-  
   const fetchProducts = async () => {
     try {
       const response = await axios.get('https://dummyjson.com/products');
