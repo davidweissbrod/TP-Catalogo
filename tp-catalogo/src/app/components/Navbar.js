@@ -15,6 +15,7 @@ export default function Header(){
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/screens/producto" passHref legacyBehavior>Producto</Nav.Link>
             <Nav.Link href="/screens/contacto" passHref legacyBehavior>Contacto</Nav.Link>
+            <Nav.Link href='/screens/carrito' passHref legacyBehavior>Carrito</Nav.Link>
           </Nav>
           </Navbar.Collapse>
         </Container>

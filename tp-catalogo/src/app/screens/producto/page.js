@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Navbar from '../../components/Navbar.js';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useCart } from '../../context/CartContext.js'
+
 
 export default function Producto() {
   const [products, setProducts] = useState([]);
@@ -13,6 +15,7 @@ export default function Producto() {
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const { addToCart } = useCart();
 
   function handleShow(product, breakpoint) {
     setSelectedProduct(product);
@@ -77,6 +80,9 @@ export default function Producto() {
               <p><strong>${product.price}</strong></p>
               <Button className="me-2 mb-2" onClick={() => handleShow(product, true)}>
                 Ver detalles
+              </Button>
+              <Button onClick={() => addToCart(product)}>
+                Agregar al Carrito
               </Button>
             </div>
           ))}
