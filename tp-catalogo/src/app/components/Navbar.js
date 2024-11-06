@@ -2,6 +2,8 @@
 import { useContextCarrito } from '../context/CartContext'; 
 import Link from 'next/link';
 import { Navbar, Nav, Container, Dropdown, Badge } from 'react-bootstrap'; 
+import { Button } from 'react-bootstrap';
+import styles from '../styles/nav.module.css'
 
 const NavbarComponent = () => {
   const { carrito, eliminarDelCarrito } = useContextCarrito(); 
@@ -26,8 +28,6 @@ const NavbarComponent = () => {
               Contacto
             </Nav.Link>
           </Nav>
-
-          {/* Sección del carrito en la navbar */}
           <Nav>
             <Dropdown align="end">
               <Dropdown.Toggle variant="success" id="dropdown-custom-components">
@@ -47,20 +47,11 @@ const NavbarComponent = () => {
                     <Dropdown.Header>Productos en el carrito</Dropdown.Header>
                     {carrito.map((producto) => (
                       <Dropdown.Item key={producto.id}>
-                        <div>{producto.nombre} x{producto.cantidad}</div>
-                        <div>Precio: ${producto.precio}</div>
-                        <button
-                          onClick={() => eliminarDelCarrito(producto.id)}
-                          style={{
-                            background: 'red',
-                            color: 'white',
-                            border: 'none',
-                            padding: '5px 10px',
-                            fontSize: '12px',
-                          }}
-                        >
+                        <div>{producto.title}</div>
+                        <div>Precio: ${producto.price}</div>
+                        <Button onPress={() => eliminarDelCarrito(producto.id)} style={{backgroundColor: 'red', border: 'none'}}>
                           Eliminar
-                        </button>
+                        </Button>
                       </Dropdown.Item>
                     ))}
                     <Dropdown.Divider />
