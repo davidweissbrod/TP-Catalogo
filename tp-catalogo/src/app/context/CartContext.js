@@ -1,5 +1,6 @@
 'use client'
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { Alert } from 'react-bootstrap';
 
 const ContextCarrito = createContext();
 export const CarritoProvider = ({ children }) => {
@@ -15,10 +16,11 @@ setCarrito(nuevoCarrito);
 localStorage.setItem('carrito', JSON.stringify(nuevoCarrito)); 
 };
 
-const eliminarDelCarrito = (productoAEliminar) => {
-    const nuevoCarrito = carrito.filter(producto => producto.id !== productoAEliminar.id);
+const eliminarDelCarrito = (producto) => {
+    const nuevoCarrito = carrito.filter(prod => prod.id !== producto.id);
     setCarrito(nuevoCarrito);
     localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
+    
 };
 
 return (

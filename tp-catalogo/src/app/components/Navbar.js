@@ -1,17 +1,16 @@
 'use client';
 import { useContextCarrito } from '../context/CartContext'; 
 import Link from 'next/link';
-import { Navbar, Nav, Container, Dropdown, Badge } from 'react-bootstrap'; 
+import { Navbar, Nav, Container, Dropdown } from 'react-bootstrap'; 
 import { Button } from 'react-bootstrap';
-import styles from '../styles/nav.module.css'
 
 const NavbarComponent = () => {
   const { carrito, eliminarDelCarrito } = useContextCarrito(); 
-  const cantidadTotal = carrito.reduce((total, producto) => total + producto.cantidad, 0); 
   const totalCompra = carrito.reduce(
-    (total, producto) => total + producto.precio * producto.cantidad,
+    (total, producto) => total + producto.price,
     0
   ); 
+  
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -30,13 +29,8 @@ const NavbarComponent = () => {
           </Nav>
           <Nav>
             <Dropdown align="end">
-              <Dropdown.Toggle variant="success" id="dropdown-custom-components">
+              <Dropdown.Toggle variant="secondary" id="dropdown-custom-components">
                 🛒
-                {cantidadTotal > 0 && (
-                  <Badge pill bg="danger" style={{ position: 'absolute', top: '0', right: '0', fontSize: '0.75rem' }}>
-                    {cantidadTotal}
-                  </Badge>
-                )}
               </Dropdown.Toggle>
 
               <Dropdown.Menu style={{ minWidth: '250px' }}>
@@ -47,9 +41,10 @@ const NavbarComponent = () => {
                     <Dropdown.Header>Productos en el carrito</Dropdown.Header>
                     {carrito.map((producto) => (
                       <Dropdown.Item key={producto.id}>
-                        <div>{producto.title}</div>
-                        <div>Precio: ${producto.price}</div>
-                        <Button onPress={() => eliminarDelCarrito(producto.id)} style={{backgroundColor: 'red', border: 'none'}}>
+                        <h4>{producto.title}</h4>
+                        <b>Precio: ${producto.price}</b>
+                        <br/>
+                        <Button onClick={() => eliminarDelCarrito(producto)} style={{backgroundColor: 'red', border: 'none'}}>
                           Eliminar
                         </Button>
                       </Dropdown.Item>

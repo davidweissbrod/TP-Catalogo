@@ -81,7 +81,7 @@ export default function Producto() {
               <Button className="me-2 mb-2" onClick={() => handleShow(product, true)}>
                 Ver detalles
               </Button>
-              <Button onClick={() => agregarAlCarrito(product)}>
+              <Button className="me-2 mb-2" variant='secondary' onClick={() => agregarAlCarrito(product)}>
                 Agregar al Carrito
               </Button>
             </div>
