@@ -1,48 +1,31 @@
-import React from "react";
-import { createContext, useContext, useState, useEffect } from "react";
+'use client'
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
-const CartContext = createContext();
+const ContextCarrito = createContext();
+export const CarritoProvider = ({ children }) => {
+const [carrito, setCarrito] = useState([]);
+useEffect(() => {
+const carritoGuardado = JSON.parse(localStorage.getItem('carrito')) || [];
+setCarrito(carritoGuardado);
+}, []);
 
-export function CartProvider({ children }) {
-  const [carrito, setCarrito] = useState(() => {
-    const carritoGuardado = localStorage.getItem("carrito");
-    return carritoGuardado ? JSON.parse(carritoGuardado) : [];
-  });
+const agregarAlCarrito = (producto) => {
+const nuevoCarrito = [...carrito, producto];
+setCarrito(nuevoCarrito);
+localStorage.setItem('carrito', JSON.stringify(nuevoCarrito)); 
+};
 
-  useEffect(() => {
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-  }, [carrito]);
+const eliminarDelCarrito = (productoAEliminar) => {
+    const nuevoCarrito = carrito.filter(producto => producto.id !== productoAEliminar.id);
+    setCarrito(nuevoCarrito);
+    localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
+};
 
-  const addToCart = (producto) => {
-    setCarrito((carritoAnterior) => {
-      const productoExiste = carritoAnterior.find((item) => item.id === producto.id);
-      if (productoExiste) {
-        return carritoAnterior.map((item) =>
-          item.id === producto.id ? { ...item, cantidad: item.cantidad + 1 } : item
-        );
-      } else {
-        return [...carritoAnterior, { ...producto, cantidad: 1 }];
-      }
-    });
-  };
-
-  const deleteFromCarrito = (id) => {
-    setCarrito((carritoAnterior) => carritoAnterior.filter((item) => item.id !== id));
-  };
-
-  const updateCantidadFromCarrito = (id, cantidad) => {
-    setCarrito((carritoAnterior) =>
-      carritoAnterior.map((item) =>
-        item.id === id ? { ...item, cantidad } : item
-      )
-    );
-  };
-
-  return (
-    <CartContext.Provider value={{ carrito, addToCart, deleteFromCarrito, updateCantidadFromCarrito }}>
-      {children}
-    </CartContext.Provider>
-  );
-}
-
-export const useCart = () => useContext(CartContext);
+return (
+<ContextCarrito.Provider value={{ carrito, agregarAlCarrito, eliminarDelCarrito }}> {children}</ContextCarrito.Provider>
+);
+};
+export const useContextCarrito = () => {
+const context = useContext(ContextCarrito);
+return context;
+};

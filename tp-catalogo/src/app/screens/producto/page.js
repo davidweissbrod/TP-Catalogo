@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Navbar from '../../components/Navbar.js';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useCart } from '../../context/CartContext.js'
+import { useContextCarrito } from '@/app/context/CartContext.js';
 
 
 export default function Producto() {
@@ -15,7 +15,7 @@ export default function Producto() {
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const { addToCart } = useCart();
+  const { agregarAlCarrito } = useContextCarrito()
 
   function handleShow(product, breakpoint) {
     setSelectedProduct(product);
@@ -81,7 +81,7 @@ export default function Producto() {
               <Button className="me-2 mb-2" onClick={() => handleShow(product, true)}>
                 Ver detalles
               </Button>
-              <Button onClick={() => addToCart(product)}>
+              <Button onClick={() => agregarAlCarrito(product)}>
                 Agregar al Carrito
               </Button>
             </div>
@@ -102,8 +102,8 @@ export default function Producto() {
                 <div>
                   <h4>Precio: <strong>${selectedProduct.price}</strong></h4>
                   <p>{selectedProduct.description}</p>
-                  <Button>
-                    Comprar
+                  <Button onClick={() => agregarAlCarrito(product)}>
+                    Agregar al Carrito
                   </Button>
                 </div>
               </>
