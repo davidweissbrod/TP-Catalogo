@@ -11,16 +11,16 @@ setCarrito(carritoGuardado);
 }, []);
 
 const agregarAlCarrito = (producto) => {
-const nuevoCarrito = [...carrito, producto];
-setCarrito(nuevoCarrito);
-localStorage.setItem('carrito', JSON.stringify(nuevoCarrito)); 
+    const nuevoCarrito = [...carrito, producto];
+    setCarrito(nuevoCarrito);
+    localStorage.setItem('carrito', JSON.stringify(nuevoCarrito)); 
+    alert('Se añadio con exito');
 };
 
 const eliminarDelCarrito = (producto) => {
     const nuevoCarrito = carrito.filter(prod => prod.id !== producto.id);
     setCarrito(nuevoCarrito);
-    localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
-    
+    localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));  
 };
 
 return (
