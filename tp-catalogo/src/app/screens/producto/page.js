@@ -102,7 +102,7 @@ export default function Producto() {
                 <div>
                   <h4>Precio: <strong>${selectedProduct.price}</strong></h4>
                   <p>{selectedProduct.description}</p>
-                  <Button onClick={() => agregarAlCarrito(product)}>
+                  <Button onClick={() => agregarAlCarrito(selectedProduct)}>
                     Agregar al Carrito
                   </Button>
                 </div>
