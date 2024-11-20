@@ -47,9 +47,7 @@ export default function Home() {
           </div>
         ))}
       </div>
-      <Router children={'Productos'} href={'./screens/producto'}>
-        Mas Productos
-      </Router>
+      <Router children={'Mas Productos'} href={'./screens/producto'}/>
     </div>
     </>
   );

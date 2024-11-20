@@ -1,6 +1,5 @@
 'use client'
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { Alert } from 'react-bootstrap';
 
 const ContextCarrito = createContext();
 export const CarritoProvider = ({ children }) => {
